@@ -1,0 +1,64 @@
+<h1>Estudiantes Aprobados</h1>
+<div class="table-wrapper">
+  <table mat-table [dataSource]="users$ | async" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let user"> {{ user.id }} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let user"> {{ user.name }} </td>
+    </ng-container>
+  
+    <!-- Grade Column -->
+    <ng-container matColumnDef="grades">
+      <th mat-header-cell *matHeaderCellDef> Calificación </th>
+      <td mat-cell *matCellDef="let user"> {{ user.grades }} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<h1>Tareas</h1>
+<div class="table-wrapper">
+  <table mat-table [dataSource]="todos$ | async" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let todo"> {{ todo.id }} </td>
+    </ng-container>
+  
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Tarea </th>
+      <td mat-cell *matCellDef="let todo"> {{ todo.title }} </td>
+    </ng-container>
+  
+    <!-- Completed Column -->
+    <ng-container matColumnDef="completed">
+      <th mat-header-cell *matHeaderCellDef> ¿Terminada? </th>
+      <td mat-cell *matCellDef="let todo">
+        <mat-icon [class]="todo.completed ? 'completed': 'incompleted'">{{ todo.completed ? 'check_circle': 'cancel' }}</mat-icon>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedApiColumns" class="header-row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedApiColumns;"></tr>
+  </table>
+</div>
+
+
+
+
