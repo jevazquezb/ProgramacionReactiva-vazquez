@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Data, Todos, UsersModel } from './users.model';
-import { Observable, filter, map, take } from 'rxjs';
+import { Observable, delay, map } from 'rxjs';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -23,6 +23,7 @@ export class UsersComponent {
     this.data$ = this.usersService.getUsers();
 
     this.todos$ = this.usersService.getTodos().pipe(
+      delay(2000),
       map(todos => todos.filter(todo => todo.userId === 7 && todo.id <= 125))
     );
   }
